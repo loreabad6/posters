@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>Geomorphic landform monitoring with raster and vector data cubes</title>
+
+
+
+
+
+
+
+<!--
+Font-awesome icons ie github or twitter
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+
+<!--
+Google fonts api stuff
+-->
+<link href='https://fonts.googleapis.com/css?family=Boogaloo' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Jost' rel='stylesheet'>
+
+<!--
+Here are the required style attributes for css to make this poster work :)
+-->
+<style>
+@page {
+size: 3370pt 2384pt;
+margin: 0;
+padding: 0;
+background-color: #ffffff;
+}
+body {
+margin: 0px;
+padding: 0px;
+width: 3370pt;
+height: 2384pt;
+text-align: justify;
+font-size: 35pt;
+background-color: #ffffff;
+color: #000000;
+}
+/* RMarkdown Class Styles */
+/* center align leaflet map,
+from https://stackoverflow.com/questions/52112119/center-leaflet-in-a-rmarkdown-document */
+.html-widget {
+margin: auto;
+position: sticky;
+margin-top: 2cm;
+margin-bottom: 2cm;
+}
+.leaflet.html-widget.html-widget-static-bound.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+position: sticky;
+width: 100%;
+}
+pre.sourceCode.r, pre.sourceCode.python {
+background-color: #ffffff20;
+border: solid #91aced 1mm;
+border-radius: 0.5em;
+padding: 4mm;
+margin: auto;
+margin-top: 1em;
+margin-bottom: 1em;
+/* align-items: center; */
+}
+div.sourceCode {
+background-color: transparent;
+width: 85%;
+margin-left: auto;
+margin-right: auto;
+}
+code.sourceCode.r, code.sourceCode.python {
+background-color: transparent;
+font-size: 20pt;
+border-radius: 2mm;
+}
+code {
+font-size: 25pt;
+font-family: monospace;
+background-color: #91aced24;
+color: #91aced;
+padding: 1.2mm;
+line-height: 1;
+border-radius: 2mm;
+}
+caption {
+margin-bottom: 10px;
+font-size: 23pt;
+font-style: italic;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #03288020;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  border-spacing: 0;
+  font-size: 40%;
+  border-style: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 1em;
+  padding-left: 1em;
+  line-height: 1em;
+}
+table {
+  margin: auto;
+}
+th {
+  padding-left: 5mm;
+  padding-right: 5mm;
+}
+.caption {
+font-size: 20pt;
+font-style: italic;
+padding-top: 0;
+}
+.references {
+font-size: 30pt;
+line-height: 90%;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+float: left;
+padding: 0px;
+}
+.outer {
+width: 3370pt;
+height: 2384pt;
+-webkit-column-count: 2; /* Chrome, Safari, Opera */
+-moz-column-count: 2; /* Firefox */
+column-count: 2;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+-webkit-column-rule-width: 0.45;
+-moz-column-rule-width: 0.45;
+column-rule-width: 0.45;
+-webkit-column-rule-style: solid;
+-moz-column-rule-style: solid;
+column-rule-style: solid;
+-webkit-column-rule-color: black;
+-moz-column-rule-color: black;
+column-rule-color: black;
+-webkit-column-gap: calc(0.45 * 100%);
+background-color: #ffffff;
+font-family: Jost;
+color: #000000;
+}
+span.citation {
+  color: #91aced;
+  font-weight: bold;
+}
+a {
+text-decoration: none;
+color: #91aced;
+}
+#title {
+font-size: 100pt;
+text-align: left;
+margin: 0;
+line-height: 90%;
+border-bottom: 0;
+}
+#author {
+color: #032880;
+margin: 0;
+text-align: left;
+line-height: 65%;
+font-size: 55pt;
+}
+#affiliation {
+padding-top: 1em;
+color: #00000080;
+font-style: italic;
+font-size: 23pt;
+margin: 0;
+}
+sup {
+color: #303449;
+}
+.affiliation sup {
+font-size: 20px;
+}
+.author sup {
+font-size: 30px;
+}
+.author_extra {
+color: #91aced;
+margin: 0;
+line-height: 85%;
+font-size: 40pt;
+}
+.outer h1 {
+text-align: center;
+margin-top: 0.5in;
+margin-bottom: 0.5in;
+}
+.outer h2 {
+text-align: center;
+}
+.outer p {
+color: #000000;
+}
+.outer ol {
+text-align: left;
+}
+.main {
+width: calc(3370pt * 0.45);
+height: 2384pt;
+position: absolute;
+margin-left: calc(3370pt * ((1 - 0.45) / 2));
+background-color: #032880;
+color: #d9e1ff;
+font-family: Boogaloo;
+background-image: linear-gradient(#032880 50%, #91aced);
+}
+.main strong {
+color: #FFFFFF;
+}
+img.main-img-left {
+width: 32%;
+left: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+img.main-img-right {
+width: 35%;
+right: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+.main p {
+padding-top: 20%;
+font-size: 145pt;
+text-align: left;
+}
+.fab {
+color: #00000080;
+font-size: 25px;
+}
+.twitter, i {
+color: #00000080;
+font-size: 35px;
+text-decoration: none;
+}
+a.email {
+text-decoration: none;
+color: #00000080;
+font-size: 35px;
+}
+.envelope {
+color: #00000080;
+font-size: 5px;
+text-decoration: none;
+}
+.globe {
+color: #00000080;
+font-size: 5px;
+text-decoration: none;
+}
+.github > .fab {
+color: #00000080;
+font-size: 40px;
+text-decoration: none;
+}
+.globetext {
+color: #00000080;
+font-size: 35px;
+text-decoration: none;
+}
+.poster_wrap {
+width: 3370pt;
+height: 2384pt;
+padding: 0cm;
+background-color: #ffffff;
+}
+span > #tab:mytable {
+  font-weight: bold;
+}
+.section {
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+.main p {
+  padding-left: 30mm;
+  padding-right: 30mm;
+}
+.main_pic {
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.orcid img {
+  width: 3%;
+}
+</style>
+</head>
+<body>
+
+
+<div class="poster_wrap">
+<div class="column outer">
+<br>
+<div class="title section">
+<h1 id="title">Geomorphic landform monitoring with raster and vector data cubes</h1>
+<br>
+<h3 id="author" class="author">
+
+Lorena Abad<sup> 1, <a class="orcid" href="https://orcid.org/0000-0003-0554-734X"><img src="https://raw.githubusercontent.com/brentthorne/posterdown/master/images/orcid.jpg"></a></sup><br>
+<a class="twitter" href="https://mobile.twitter.com/loreabad6"><i class="fab fa-twitter"></i>&nbsp;@loreabad6</a> <br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:lorena.abad@plus.ac.at" class="email">lorena.abad@plus.ac.at</a> <br>
+</h3>
+
+<h5 id="author_extra" class="author_extra">
+</h5>
+
+<p id="affiliation" class="affiliation">
+<sup>1</sup> Department of Geoinformatics - Z_GIS, University of Salzburg, 5020 Salzburg, Austria
+</p>
+
+</div>
+<style>
+.outer h1 {
+ text-align: center;
+ margin-top: 0.6in;
+ margin-bottom: -0.4in;
+}
+caption {
+ margin-top: 0px;
+ margin-bottom: 2px;
+ padding-top: 0in;
+ padding-bottom: 0in;
+ font-size: 23pt;
+}
+.caption {
+ margin-top: -2px;
+ margin-bottom: 2px;
+ padding-top: 0in;
+ padding-bottom: 0in;
+ font-size: 23pt;
+}
+.main p {
+ padding-top: 0%;
+ text-align: left;
+}
+.main_pic {
+ <!-- margin-top: -1in; -->
+ display: inline-block;
+ text-align: center;
+}
+</style>
+<style type="text/css">
+.table caption {
+    color: black;
+    margin-top: 0px;
+    margin-bottom: 6px;
+    margin-left: 2mm;
+    text-align: left;
+}
+.table {
+    font-weight: normal;
+    margin-bottom: 1px;
+}
+</style>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<ul>
+<li>Landscapes and geomorphic landforms are in constant change, where dynamic processes drive their evolution over time.</li>
+<li>Assessing these changes allows us to understand landscape patterns and interrelations.</li>
+<li>Monitoring the evolution of landforms related to natural hazards, like proglacial lakes, volcanic lava flows, landslides or gully erosion, is important for disaster risk prevention and mitigation.</li>
+<li>Data cubes and Earth observation data allows the study of landscape dynamics.
+<br></li>
+<li><strong>Objectives:</strong>
+<ul>
+<li>Explore the applicability of vector data cubes as a way to organise, analyse and visualise geomorphic landforms with changing geometries.</li>
+<li>Integrate vector data cubes with information derived from raster EO data cubes.</li>
+</ul></li>
+</ul>
+</div>
+<div id="challenge" class="section level1">
+<h1>Challenge</h1>
+<ul>
+<li>Long time series analysis at pixel location is possible due to the gridded nature of data cubes.</li>
+<li>But, these queries over time ignore the spatial context.</li>
+<li>Moving from a pixel to an object representation can improve the analysis of landscape dynamics, specially for geomorphological analyses.</li>
+<li>Feature extraction techniques (e.g. OBIA, Deep Learning) can outline geomorphological features at different points in time.</li>
+<li>But once we transition from a pixel-based to a vector representation, the query and analysis advantages of a data cube are lost.</li>
+<li>The challenge lies on the changing shapes of the geomorphological features.</li>
+</ul>
+</div>
+<div id="implementation" class="section level1">
+<h1>Implementation</h1>
+<ul>
+<li>Array-based and tabular representations are tested to build vector data cubes.</li>
+<li>The approach is exemplified with the Fagradalsfjall volcanic lava flow outlines from <span class="citation">[1]</span>.</li>
+<li>Integration of vector data cube structures with raster data cubes are explored</li>
+<li>EO derived information is aggregated over the landform geometries.</li>
+</ul>
+</div>
+<div id="results" class="section level1">
+<h1>Results</h1>
+<ul>
+<li>Vector data cubes for shape-evolving feature can be implemented as array and tabular formats.</li>
+<li>The aggregation approach allows for further landform characterisation</li>
+<li>Extracted data is matched considering the spatial and temporal properties of the landform.</li>
+<li>The usage of vector data cube representations could advance the spatio-temporal analysis and monitoring of landscapes and landforms.</li>
+<li>This can benefit different disciplines related to the geosciences.</li>
+</ul>
+<div id="references" class="section level3 unnumbered">
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body">
+<div id="ref-pedersen_2023_7866738" class="csl-entry">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">G. B. M. Pedersen <em>et al.</em>, <span>“Digital elevation models, orthoimages and lava outlines of the 2021 fagradalsfjall eruption: Results from near real-time photogrammetric monitoring.”</span> Zenodo, Apr. 2023. doi: <a href="https://doi.org/10.5281/zenodo.7866738">10.5281/zenodo.7866738</a>.</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="main">
+<p><img src="figs/lavaflowplot-1.png" class="main_pic" /><br><br> Vector and raster data cubes are efficient tools for the spatio-temporal analysis and monitoring of landscapes and landforms</p>
+<img src="figs/plus-zgis-bw.png" class="main-img-left" />
+<img src="figs/egu24-logo-qr.png" class="main-img-right" />
+</div>
+</div>
+
+
+
+</body>
+</html>
