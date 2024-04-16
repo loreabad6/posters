@@ -44,7 +44,7 @@ padding: 0px;
 width: 3370pt;
 height: 2384pt;
 text-align: justify;
-font-size: 35pt;
+font-size: 33pt;
 background-color: #ffffff;
 color: #000000;
 }
@@ -63,7 +63,7 @@ width: 100%;
 }
 pre.sourceCode.r, pre.sourceCode.python {
 background-color: #ffffff20;
-border: solid #91aced 1mm;
+border: solid #E6EDFF 1mm;
 border-radius: 0.5em;
 padding: 4mm;
 margin: auto;
@@ -85,20 +85,20 @@ border-radius: 2mm;
 code {
 font-size: 25pt;
 font-family: monospace;
-background-color: #91aced24;
-color: #91aced;
+background-color: #E6EDFF24;
+color: #E6EDFF;
 padding: 1.2mm;
 line-height: 1;
 border-radius: 2mm;
 }
 caption {
 margin-bottom: 10px;
-font-size: 23pt;
+font-size: 20pt;
 font-style: italic;
 }
 
 tbody tr:nth-child(odd) {
-    background-color: #03288020;
+    background-color: #7394E420;
 }
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
   border-spacing: 0;
@@ -123,7 +123,7 @@ font-style: italic;
 padding-top: 0;
 }
 .references {
-font-size: 30pt;
+font-size: 25pt;
 line-height: 90%;
 }
 /* Create three unequal columns that floats next to each other */
@@ -140,37 +140,37 @@ column-count: 2;
 -webkit-column-fill: auto;
 -moz-column-fill: auto;
 column-fill: auto;
--webkit-column-rule-width: 0.45;
--moz-column-rule-width: 0.45;
-column-rule-width: 0.45;
+-webkit-column-rule-width: 0.42;
+-moz-column-rule-width: 0.42;
+column-rule-width: 0.42;
 -webkit-column-rule-style: solid;
 -moz-column-rule-style: solid;
 column-rule-style: solid;
 -webkit-column-rule-color: black;
 -moz-column-rule-color: black;
 column-rule-color: black;
--webkit-column-gap: calc(0.45 * 100%);
+-webkit-column-gap: calc(0.42 * 100%);
 background-color: #ffffff;
 font-family: Jost;
 color: #000000;
 }
 span.citation {
-  color: #91aced;
+  color: #E6EDFF;
   font-weight: bold;
 }
 a {
 text-decoration: none;
-color: #91aced;
+color: #E6EDFF;
 }
 #title {
-font-size: 100pt;
+font-size: 90pt;
 text-align: left;
 margin: 0;
 line-height: 90%;
 border-bottom: 0;
 }
 #author {
-color: #032880;
+color: #7394E4;
 margin: 0;
 text-align: left;
 line-height: 65%;
@@ -193,7 +193,7 @@ font-size: 20px;
 font-size: 30px;
 }
 .author_extra {
-color: #91aced;
+color: #E6EDFF;
 margin: 0;
 line-height: 85%;
 font-size: 40pt;
@@ -213,33 +213,33 @@ color: #000000;
 text-align: left;
 }
 .main {
-width: calc(3370pt * 0.45);
+width: calc(3370pt * 0.42);
 height: 2384pt;
 position: absolute;
-margin-left: calc(3370pt * ((1 - 0.45) / 2));
-background-color: #032880;
-color: #d9e1ff;
+margin-left: calc(3370pt * ((1 - 0.42) / 2));
+background-color: #7394E4;
+color: #032880;
 font-family: Boogaloo;
-background-image: linear-gradient(#032880 50%, #91aced);
+background-image: linear-gradient(#7394E4 50%, #E6EDFF);
 }
 .main strong {
 color: #FFFFFF;
 }
 img.main-img-left {
-width: 32%;
+width: 50%;
 left: 0.5in;
 bottom: 0.2in;
 position: absolute;
 }
 img.main-img-right {
-width: 35%;
+width: 45%;
 right: 0.5in;
 bottom: 0.2in;
 position: absolute;
 }
 .main p {
 padding-top: 20%;
-font-size: 145pt;
+font-size: 138pt;
 text-align: left;
 }
 .fab {
@@ -332,31 +332,47 @@ Lorena Abad<sup> 1, <a class="orcid" href="https://orcid.org/0000-0003-0554-734X
 <style>
 .outer h1 {
  text-align: center;
- margin-top: 0.6in;
+ margin-top: 0.3in;
  margin-bottom: -0.4in;
 }
-caption {
- margin-top: 0px;
- margin-bottom: 2px;
- padding-top: 0in;
- padding-bottom: 0in;
- font-size: 23pt;
+.outer h2 {
+ text-align: center;
+ margin-top: 0.3in;
+ margin-bottom: -0.4in;
+}
+.outer h3 {
+ margin-top: 0.2in;
+ margin-bottom: 0in;
+ font-size: 30pt;
 }
 .caption {
  margin-top: -2px;
  margin-bottom: 2px;
  padding-top: 0in;
  padding-bottom: 0in;
- font-size: 23pt;
+ font-size: 26pt;
 }
 .main p {
+ margin-top: -0.1px;
  padding-top: 0%;
  text-align: left;
 }
 .main_pic {
- <!-- margin-top: -1in; -->
+ margin-top: -1.8in;
+ margin-left: -1in;
  display: inline-block;
  text-align: center;
+}
+span.citation {
+  color: #7394E4;
+  font-weight: bold;
+}
+a {
+  text-decoration: none;
+  color: #7394E4;
+}
+#affiliation {
+  padding-top: 0.06em;
 }
 </style>
 <style type="text/css">
@@ -374,53 +390,66 @@ caption {
 </style>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<ul>
-<li>Landscapes and geomorphic landforms are in constant change, where dynamic processes drive their evolution over time.</li>
-<li>Assessing these changes allows us to understand landscape patterns and interrelations.</li>
-<li>Monitoring the evolution of landforms related to natural hazards, like proglacial lakes, volcanic lava flows, landslides or gully erosion, is important for disaster risk prevention and mitigation.</li>
-<li>Data cubes and Earth observation data allows the study of landscape dynamics.
-<br></li>
-<li><strong>Objectives:</strong>
-<ul>
-<li>Explore the applicability of vector data cubes as a way to organise, analyse and visualise geomorphic landforms with changing geometries.</li>
-<li>Integrate vector data cubes with information derived from raster EO data cubes.</li>
-</ul></li>
-</ul>
+<!-- - Assessing these changes allows us to understand landscape patterns and interrelations.  -->
+<p>Landscapes and landforms are in constant change with dynamic processes driving their evolution.
+Monitoring landforms related to natural hazards, like proglacial lakes, volcanic lava flows, landslides or gully erosion, is important for disaster risk prevention and mitigation.
+There, Earth observation (EO) data and data cubes have shown useful to study landscape dynamics.</p>
+<p><strong>Objectives:</strong> <em>1)</em> to adapt vector data cubes to structure and analyse landforms with changing geometries and <em>2)</em> to adjust spatio-temporal operations for raster-vector data cube interaction.</p>
 </div>
 <div id="challenge" class="section level1">
 <h1>Challenge</h1>
 <ul>
-<li>Long time series analysis at pixel location is possible due to the gridded nature of data cubes.</li>
-<li>But, these queries over time ignore the spatial context.</li>
-<li>Moving from a pixel to an object representation can improve the analysis of landscape dynamics, specially for geomorphological analyses.</li>
-<li>Feature extraction techniques (e.g. OBIA, Deep Learning) can outline geomorphological features at different points in time.</li>
-<li>But once we transition from a pixel-based to a vector representation, the query and analysis advantages of a data cube are lost.</li>
-<li>The challenge lies on the changing shapes of the geomorphological features.</li>
+<li>Long time series analysis at pixel locations is possible due to the gridded nature of data cubes. But, these queries ignore the spatial context. Moving from pixels to objects can improve the analysis of landscape dynamics.</li>
+<li>With feature extraction techniques (e.g. OBIA, deep learning, manual delineation), we can outline geomorphological features at various points in time. But, when converting from pixels to objects the query advantages of a data cube are lost.</li>
+<li>To represent a vector time series as a data cube, the challenge lies on the changing shapes of the features.</li>
+<li>As for raster-vector interactions, spatio-temporal operations, like value extraction as zonal statistics or intersection operations are not commonly implemented.</li>
 </ul>
 </div>
 <div id="implementation" class="section level1">
 <h1>Implementation</h1>
 <ul>
-<li>Array-based and tabular representations are tested to build vector data cubes.</li>
-<li>The approach is exemplified with the Fagradalsfjall volcanic lava flow outlines from <span class="citation">[1]</span>.</li>
-<li>Integration of vector data cube structures with raster data cubes are explored</li>
-<li>EO derived information is aggregated over the landform geometries.</li>
+<li>Vector data cubes are used to integrate geomorphological features with changing geometries as array-based and tabular formats as shown in Fig. <a href="#fig:fig-vdc">1</a>.</li>
+<li>Spatio-temporal interactions can be implemented to extract information from the raster data cube, based on the vector data temporal dimension. Examples of how these functions would be implemented in the R package {stars} are shown in Fig. <a href="#fig:fig-snippets">2</a>.</li>
 </ul>
+<div class="figure"><span style="display:block;" id="fig:fig-vdc"></span>
+<img src="figs/vdc-schema-shorter-colored.png" alt="Array-based (a) and tabular (b) representations for vector data cubes" width="100%" />
+<p class="caption">
+Figure 1: Array-based (a) and tabular (b) representations for vector data cubes
+</p>
 </div>
-<div id="results" class="section level1">
-<h1>Results</h1>
-<ul>
-<li>Vector data cubes for shape-evolving feature can be implemented as array and tabular formats.</li>
-<li>The aggregation approach allows for further landform characterisation</li>
-<li>Extracted data is matched considering the spatial and temporal properties of the landform.</li>
-<li>The usage of vector data cube representations could advance the spatio-temporal analysis and monitoring of landscapes and landforms.</li>
-<li>This can benefit different disciplines related to the geosciences.</li>
-</ul>
+<div class="figure"><span style="display:block;" id="fig:fig-snippets"></span>
+<img src="figs/snippets.png" alt="Spatio-temporal operations with the R package {stars}." width="100%" />
+<p class="caption">
+Figure 2: Spatio-temporal operations with the R package {stars}.
+</p>
+</div>
+</div>
+<div id="application" class="section level1">
+<h1>Application</h1>
+<p>Vector data cubes and their integration with raster data cubes are showcased with the Fagradalsfjall volcanic lava flow outlines from <span class="citation">Pedersen et al. (2023)</span>.
+The centre figure shows a subset of lava flow outlines and elevation rasters from the study.
+The raster/vector integration allows extraction of zonal statistics (Fig. <a href="#fig:fig-ts">3</a>) but also spatial cropping considering the temporal dimension.</p>
+<div class="figure"><span style="display:block;" id="fig:fig-ts"></span>
+<img src="figs/tsplotEGU24-1.png" alt="Time series of average thickness (a) and volume (b) of lava flows in Fagradalsfjall, Iceland." width="100%" />
+<p class="caption">
+Figure 3: Time series of average thickness (a) and volume (b) of lava flows in Fagradalsfjall, Iceland.
+</p>
+</div>
+</div>
+<div id="conclusions" class="section level1">
+<h1>Conclusions</h1>
+<p>Vector data cubes for features with changing geometries facilitates landform characterisation.
+Further, the integration of spatial <em>and</em> temporal properties in data cube operations can benefit various disciplines within the geosciences.
+<!-- Vector data cubes for landforms evolving over time can be implemented as array and tabular formats. -->
+<!-- Adapting spatio-temporal operations allows for more efficient landform characterisation. -->
+<!-- Extracted data is matched considering the spatial and temporal properties of the landform. -->
+<!-- The usage of vector data cube representations could advance the spatio-temporal analysis and monitoring of landscapes and landforms. -->
+<!-- This approach can benefit different disciplines related to the geosciences. --></p>
 <div id="references" class="section level3 unnumbered">
 <h3>References</h3>
-<div id="refs" class="references csl-bib-body">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-pedersen_2023_7866738" class="csl-entry">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">G. B. M. Pedersen <em>et al.</em>, <span>“Digital elevation models, orthoimages and lava outlines of the 2021 fagradalsfjall eruption: Results from near real-time photogrammetric monitoring.”</span> Zenodo, Apr. 2023. doi: <a href="https://doi.org/10.5281/zenodo.7866738">10.5281/zenodo.7866738</a>.</div>
+Pedersen GBM, Belart JMC, Óskarsson BV, et al. (2023) Digital <span>Elevation</span> <span>Models</span>, orthoimages and lava outlines of the 2021 <span>Fagradalsfjall</span> eruption: Results from near real-time photogrammetric monitoring. Zenodo. Available at: <a href="https://doi.org/10.5281/zenodo.7866738 ">https://doi.org/10.5281/zenodo.7866738 </a>.
 </div>
 </div>
 </div>
@@ -428,8 +457,8 @@ caption {
 
 </div>
 <div class="main">
-<p><img src="figs/lavaflowplot-1.png" class="main_pic" /><br><br> Vector and raster data cubes are efficient tools for the spatio-temporal analysis and monitoring of landscapes and landforms</p>
-<img src="figs/plus-zgis-bw.png" class="main-img-left" />
+<p>Interaction between <strong>raster</strong> and <strong>vector data cubes</strong> facilitates the <strong>spatio-temporal</strong> analysis and monitoring of landforms<br><br> <img src="figs/mainplotEGU24-1.png" class="main_pic" /></p>
+<img src="figs/vdc-zgis-plus-logos.png" class="main-img-left" />
 <img src="figs/egu24-logo-qr.png" class="main-img-right" />
 </div>
 </div>
